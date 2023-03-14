@@ -12,6 +12,7 @@ import Extras from './Extras';
 import Contact from './Contact';
 import About from './About';
 import Footer from './Footer';
+import PotterGame from './PotterGame';
 
 function App() {
 
@@ -31,6 +32,8 @@ function App() {
             <Route path="/about" element={<About />}/>
             <Route path="/contact" element={<Contact />}/>
             <Route path="/extras" element={<Extras />}/>
+            <Route path="/potter" element={<PotterGame />}/>
+            
           </Routes>
         </div>
         <Footer />
