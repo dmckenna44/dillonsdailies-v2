@@ -8,6 +8,9 @@ import Fact from './Fact';
 import Highlight from './Highlight';
 import Joke from './Joke';
 import Recipe from './Recipe';
+import Extras from './Extras';
+import Contact from './Contact';
+import About from './About';
 
 function App() {
 
@@ -24,6 +27,9 @@ function App() {
             <Route path="/highlight" element={<Highlight />}/>
             <Route path="/quote" element={<Quote />}/>
             <Route path="/recipe" element={<Recipe />}/>
+            <Route path="/about" element={<About />}/>
+            <Route path="/contact" element={<Contact />}/>
+            <Route path="/extras" element={<Extras />}/>
           </Routes>
         </div>
       </div>

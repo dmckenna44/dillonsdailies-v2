@@ -26,14 +26,15 @@ body {
 
   &:hover {
     color: blue;
+    transform: translate(1px, 1px);
   }
 }
 
 .nav-links {
+  display: flex;
   margin-right: 1rem;
   color: black;
   
-
   a {
     margin: .5rem;
     text-decoration: none;
@@ -42,5 +43,6 @@ body {
 
   a:hover {
     color: blue;
+    transform: scale(1.2);
   }
 }
