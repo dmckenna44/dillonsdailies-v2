@@ -46,3 +46,31 @@ body {
     transform: scale(1.2);
   }
 }
+
+.recipe-img {
+  width: 50%;
+  align-self: center;
+}
+
+.recipe-title {
+  align-self: center;
+}
+
+.poem-lines {
+  line-height: 55%;
+}
+
+.fact-text {
+  align-self: center;
+}
+
+.footer {
+  position: absolute;
+  text-align: center;
+  height: 3rem;
+  background-color: #FAFCC2;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  font-family: 'Pacifico';
+}

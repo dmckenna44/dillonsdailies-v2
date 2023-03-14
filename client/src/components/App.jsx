@@ -11,6 +11,7 @@ import Recipe from './Recipe';
 import Extras from './Extras';
 import Contact from './Contact';
 import About from './About';
+import Footer from './Footer';
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
             <Route path="/extras" element={<Extras />}/>
           </Routes>
         </div>
+        <Footer />
       </div>
     </Router>
   )

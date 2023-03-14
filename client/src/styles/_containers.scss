@@ -44,6 +44,9 @@
 }
 
 .daily-item {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
   background-color: #FAFCC2;
   padding: 1.5rem;
   // box-shadow: .5rem .5rem black;

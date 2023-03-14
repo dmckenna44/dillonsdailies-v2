@@ -28,7 +28,7 @@ const Poem = () => {
         <div className="daily-item">
           <h3>{poem.title}</h3>
           <h4>{poem.author}</h4>
-          {lines}
+          <div className="poem-lines">{lines}</div>
         </div> : null
       }
 

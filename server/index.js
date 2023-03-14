@@ -37,5 +37,21 @@ server.listen(PORT, () => {
 })
 
 app.get('/api/poem', dataController.getPoem, (req, res) => {
-  res.status(200).json(res.locals.foundPoem)
+  res.status(200).json(res.locals.foundData)
+})
+
+app.get('/api/recipe', dataController.getRecipe, (req, res) => {
+  res.status(200).json(res.locals.foundData)
+})
+
+app.get('/api/joke', dataController.getJoke, (req, res) => {
+  res.status(200).json(res.locals.foundData)
+})
+
+app.get('/api/highlight', dataController.getHighlight, (req, res) => {
+  res.status(200).json(res.locals.foundData)
+})
+
+app.get('/api/saying', dataController.getSaying, (req, res) => {
+  res.status(200).json(res.locals.foundData)
 })
