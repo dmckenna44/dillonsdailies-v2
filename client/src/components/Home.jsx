@@ -20,7 +20,7 @@ const Home = () => {
       <h1>Dillon's Daily Doses</h1>
       <h3>You've got time to waste, and we're here to help.</h3>
       <div className="main-links-container">
-        <a className="main-link" onClick={testPoem}>Poem</a>
+        <a href="/poem" className="main-link">Poem</a>
         <a href="/quote" className="main-link">Quote</a>
         <a href="/joke" className="main-link">Joke</a>
         <a href="/recipe" className="main-link">Recipe</a>

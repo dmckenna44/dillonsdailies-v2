@@ -5,6 +5,8 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 const cors = require('cors');
 
+const dataController = require('./controllers/dataController')
+
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -14,6 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 const server = http.createServer(app);
+mongoose.connect(process.env.DB_CONN)
 
 
 if (process.env.NODE_ENV === "production") {
@@ -33,6 +36,6 @@ server.listen(PORT, () => {
   console.log(`server listening on port ${PORT}`);
 })
 
-app.get('/api/poem', (req, res) => {
-  res.status(200).json({msg: 'hello'})
+app.get('/api/poem', dataController.getPoem, (req, res) => {
+  res.status(200).json(res.locals.foundPoem)
 })

@@ -33,3 +33,24 @@
     transform: scale(1.2);
   }
 }
+
+.daily-item-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'EB Garamond';
+  margin: 3rem;
+  padding: 1rem;
+}
+
+.daily-item {
+  background-color: #FAFCC2;
+  padding: 1.5rem;
+  // box-shadow: .5rem .5rem black;
+  border-radius: .5rem;
+  box-shadow: 0.2rem 0.2rem 0.2rem 0 darken(#CCF6C8, 40%);
+
+  h4 {
+    margin-bottom: 2.5rem;
+  }
+}
