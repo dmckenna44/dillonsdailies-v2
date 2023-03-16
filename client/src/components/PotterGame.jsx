@@ -1,77 +1,39 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, createContext, useContext} from "react";
+import HPLevel from "./HPLevel";
 
+const LevelContext = createContext(0);
+const ScoreContext = createContext({
+  total: 0,
+  right: 0,
+  wrong: 0,
+  characters: []
+});
 
 const PotterGame = () => {
 
   const [fullData, setFullData] = useState();
-  const [wandOptions, setWandOptions] = useState([])
-  const [patronusOptions, setPatronusOptions] = useState([])
-  const [houseOptions, setHouseOptions] = useState([])
-  const [actorOptions, setActorOptions] = useState([])
+  const [charOptions, setCharOptions] = useState([]);
+  const [score, setScore] = useState({});
+  const [questionLevel, setQuestionLevel] = useState(0);
 
-  const [correctHouse, setCorrectHouse] = useState('')
-  const [correctPatronus, setCorrectPatronus] = useState('')
-  const [correctWand, setCorrectWand] = useState('')
-  const [correctActor, setCorrectActor] = useState('')
-
-  const [guessHouse, setGuessHouse] = useState('')
-  const [guessPatronus, setGuessPatronus] = useState('')
-  const [guessWand, setGuessWand] = useState('')
-  const [guessActor, setGuessActor] = useState('')
-
-  const [score, setScore] = useState(0);
-  const [questionLevel, setQuestionLevel] = useState(1);
-
+  const levels = ['house', 'patronus', 'wand', 'actor'];
 
   const getInfo = async () => {
     const info = await fetch('https://hp-api.onrender.com/api/characters');
     const data = await info.json()
-    console.log(data);
     const useableData = [];
-    const actorOptions = [];
-    const wandOptions = new Set();
-    const patronusOptions = new Set();
-    const houseOptions = new Set();
+    const actors = [];
+    const wands = new Set();
+    const patronus = new Set();
     data.forEach(char => {
       if ((char.wand.wood || char.patronus) && char.actor && char.house) useableData.push(char);
-      if (char.wand.wood) wandOptions.add(char.wand.wood);
-      if (char.patronus) patronusOptions.add(char.patronus);
-      if (char.house) houseOptions.add(char.house);
-      if (char.actor) actorOptions.push(char.actor);
+      if (char.wand.wood) wands.add(char.wand.wood);
+      if (char.patronus) patronus.add(char.patronus);
+      // if (char.house) houseOptions.add(char.house);
+      if (char.actor) actors.push(char.actor);
     })
-
-    setFullData(useableData);
-    setWandOptions([...wandOptions])
-    setPatronusOptions([...patronusOptions])
-    setActorOptions(actorOptions);
-    console.log(useableData);
-    console.log(wandOptions)
-  }
-
-  const checkAnswer = () => {
-    
-  }
-
-  const createQuestion = (character) => {
-    if(questionLevel === 1) {
-
-
-      return (
-        <div className="question-card">
-          <div>
-            <input type="radio" id="choice1" name="choiceList"/>
-            <label htmlFor="choice1">Gryffindor</label>
-            <input type="radio" id="choice2" name="choiceList"/>
-            <label htmlFor="choice2">Hufflepuff</label>
-            <input type="radio" id="choice3" name="choiceList"/>
-            <label htmlFor="choice3">Slytherin</label>
-            <input type="radio" id="choice4" name="choiceList"/>
-            <label htmlFor="choice4">Ravenclaw</label>
-          </div>
-          <button onClick={checkAnswer}>Submit Answer</button>
-        </div>
-      )
-    }
+    setCharOptions(useableData.map(char => Object.assign({}, char, {wand: char.wand.wood})));
+    setFullData([['Hufflepuff', 'Gryffindor', 'Ravenclaw', 'Slytherin'], [...patronus], [...wands], actors]);
   }
 
   useEffect(() => {
@@ -83,7 +45,13 @@ const PotterGame = () => {
     <div className="daily-item-container">
         <div className="daily-item">
           <h1>Test Your Harry Potter Knowledge</h1>
-          {
+          <LevelContext.Provider value={{questionLevel, setQuestionLevel}}>
+            <ScoreContext.Provider value={{score, setScore}}>
+              {fullData ? <HPLevel index={questionLevel} level={levels[questionLevel]} data={fullData} character={charOptions[0]}/> : null} 
+            </ScoreContext.Provider>
+          </LevelContext.Provider>
+          
+          {/* {
             fullData ? 
             <div>
             <input type="radio" id="choice1" name="choiceList"/>
@@ -97,7 +65,7 @@ const PotterGame = () => {
             </div>
             :
             null
-          }
+          } */}
             
         </div>
 
@@ -106,7 +74,7 @@ const PotterGame = () => {
   )
 }
 
-
+export {ScoreContext, LevelContext};
 export default PotterGame;
 
 
