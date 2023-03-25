@@ -65,7 +65,7 @@ body {
 }
 
 .footer {
-  position: absolute;
+  position: fixed;
   text-align: center;
   height: 3rem;
   background-color: #FAFCC2;
@@ -73,4 +73,9 @@ body {
   left: 0;
   width: 100%;
   font-family: 'Pacifico';
+}
+
+.option-list {
+  display: flex;
+  flex-direction: column;
 }

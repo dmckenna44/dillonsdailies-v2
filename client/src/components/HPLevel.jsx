@@ -64,11 +64,13 @@ const HPLevel = (props) => {
 
   const checkAnswer = () => {
     console.log('guess', guess);
+    console.log('answer', answer)
     if (answer === guess) {
       setScore({
         total: score + 1,
         
       })
+      console.log('RIGHT')
     } else console.log('WRONG')
     setQuestionLevel(questionLevel === 3 ? 0 : questionLevel + 1);
   }
@@ -80,7 +82,7 @@ const HPLevel = (props) => {
         <div>
           <h2>{character.name}</h2>
           <h4>{prompt(index)}</h4>
-          <form action="" onChange={(e) => setGuess(e.target.value)}>
+          <form action="" onChange={(e) => setGuess(e.target.value)} className="form option-list">
             <input type="radio" id="choice1" name="choiceList" value={choices[0]}/>
             <label htmlFor="choice1">{choices[0]}</label>
             <input type="radio" id="choice2" name="choiceList" value={choices[1]}/>
