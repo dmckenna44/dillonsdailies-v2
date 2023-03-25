@@ -83,14 +83,22 @@ const HPLevel = (props) => {
           <h2>{character.name}</h2>
           <h4>{prompt(index)}</h4>
           <form action="" onChange={(e) => setGuess(e.target.value)} className="form option-list">
-            <input type="radio" id="choice1" name="choiceList" value={choices[0]}/>
-            <label htmlFor="choice1">{choices[0]}</label>
-            <input type="radio" id="choice2" name="choiceList" value={choices[1]}/>
-            <label htmlFor="choice2">{choices[1]}</label>
-            <input type="radio" id="choice3" name="choiceList" value={choices[2]}/>
-            <label htmlFor="choice3">{choices[2]}</label>
-            <input type="radio" id="choice4" name="choiceList" value={choices[3]}/>
-            <label htmlFor="choice4">{choices[3]}</label>
+            <div className="form-option">
+              <label htmlFor="choice1">{choices[0]}</label>
+              <input type="radio" id="choice1" name="choiceList" value={choices[0]}/>
+            </div>
+            <div className="form-option">
+              <label htmlFor="choice2">{choices[1]}</label>
+              <input type="radio" id="choice2" name="choiceList" value={choices[1]}/>
+            </div>
+            <div className="form-option">
+              <label htmlFor="choice3">{choices[2]}</label>
+              <input type="radio" id="choice3" name="choiceList" value={choices[2]}/>
+            </div>
+            <div className="form-option">
+              <label htmlFor="choice4">{choices[3]}</label>
+              <input type="radio" id="choice4" name="choiceList" value={choices[3]}/>
+            </div>
           </form>
         </div>
         <button onClick={checkAnswer}>Submit Answer</button>
